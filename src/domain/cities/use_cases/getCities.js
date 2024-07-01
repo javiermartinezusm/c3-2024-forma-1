@@ -6,7 +6,13 @@ exports.getAllCitiesUseCase = (ctx) => {
 }
 
 exports.getCitiesByCountryUseCase = (ctx) => { //ESTE ES
-    ctx.body = citiesRepository.searchCitiesByCountryName(ctx.params.country)
+    const ciudades = citiesRepository.searchCitiesByCountryName(ctx.params.country)
+    if(ciudades.length!=0){
+        ctx.body = ciudades
+    }
+    else{
+        ctx.body = {message: "No se encontraron ciudades para el país ingresado"}
+    }
     ctx.status = 200
     return ctx
 }

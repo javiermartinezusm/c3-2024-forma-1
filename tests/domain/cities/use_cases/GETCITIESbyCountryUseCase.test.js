@@ -35,7 +35,7 @@ describe('getCitiesByCountryUseCase', () => {
     };
     getCitiesByCountryUseCase(ctx);
     expect(citiesRepository.searchCitiesByCountryName).toHaveBeenCalledWith(country);
-    expect(ctx.body).toEqual(cities);
+    expect(ctx.body).toEqual({ message: 'No se encontraron ciudades para el país ingresado' });
     expect(ctx.status).toEqual(200);
   });
 });
