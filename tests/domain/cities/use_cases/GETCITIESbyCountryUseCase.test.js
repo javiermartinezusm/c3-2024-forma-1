@@ -8,8 +8,8 @@ describe('getCitiesByCountryUseCase', () => {
         jest.clearAllMocks(); // Resetea todos los mocks antes de cada test
     });
 
-    it('debería retornar la lista de ciudades con status 200 para chile', () => {
-        const country = 'chile';
+    it('debería retornar la lista de ciudades con status 200 de Chile para cHiLe', () => {
+        const country = 'cHiLe';
         const cities = ['Santiago', 'Valparaíso', 'Concepción'];
         citiesRepository.searchCitiesByCountryName.mockReturnValue(cities);
         const ctx = {

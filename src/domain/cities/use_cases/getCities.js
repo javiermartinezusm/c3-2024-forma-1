@@ -9,7 +9,10 @@ exports.getCitiesByCountryUseCase = (ctx) => {
     const country = ctx.params.country;
     const ciudades = citiesRepository.searchCitiesByCountryName(country);
     const regex = /[0-9]/
-    if (regex.test(country)) {
+    if(country.length < 3){
+        ctx.body = { message: "El país/ciudad ingresado debe tener al menos 3 caracteres" };
+        ctx.status = 400;
+    } else if (regex.test(country)) {
         ctx.body = { message: "Solo se aceptan caracteres no numéricos" };
         ctx.status = 400;
     } else {
