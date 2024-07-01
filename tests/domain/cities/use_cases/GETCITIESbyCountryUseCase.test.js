@@ -20,6 +20,7 @@ describe('getCitiesByCountryUseCase', () => {
     getCitiesByCountryUseCase(ctx);
     expect(citiesRepository.searchCitiesByCountryName).toHaveBeenCalledWith(country);
     expect(ctx.body).toEqual(cities);
+    expect(ctx.status).toEqual(200);
   });
 
   it('debería retornar una lista vacía para Wakanda', () => {
@@ -35,5 +36,6 @@ describe('getCitiesByCountryUseCase', () => {
     getCitiesByCountryUseCase(ctx);
     expect(citiesRepository.searchCitiesByCountryName).toHaveBeenCalledWith(country);
     expect(ctx.body).toEqual(cities);
+    expect(ctx.status).toEqual(200);
   });
 });
