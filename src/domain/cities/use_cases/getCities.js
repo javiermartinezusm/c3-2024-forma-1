@@ -5,7 +5,7 @@ exports.getAllCitiesUseCase = (ctx) => {
     return ctx
 }
 
-exports.getCitiesByCountryUseCase = (ctx) => {
+exports.getCitiesByCountryUseCase = (ctx) => { //ESTE ES
     ctx.body = citiesRepository.searchCitiesByCountryName(ctx.params.country)
     return ctx
 }
