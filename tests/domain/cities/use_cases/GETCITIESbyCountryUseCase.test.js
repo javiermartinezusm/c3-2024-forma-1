@@ -9,6 +9,7 @@ describe('getCitiesByCountryUseCase', () => {
     });
 
     it('debería retornar la lista de ciudades con status 200 de Chile para cHiLe', () => {
+        //Este test valida que busque de todas formas el pais correspondiente independiente de las mayusculas o minusculas
         const country = 'cHiLe';
         const cities = ['Santiago', 'Valparaíso', 'Concepción'];
         citiesRepository.searchCitiesByCountryName.mockReturnValue(cities);
@@ -23,6 +24,7 @@ describe('getCitiesByCountryUseCase', () => {
     });
 
     it('debería retornar el mensaje especial con status 200 para Wakanda', () => {
+        //Wakanda no existe por lo que se utiliza para el 2do caso
         const country = 'Wakanda';
         const cities = [];
         citiesRepository.searchCitiesByCountryName.mockReturnValue(cities);
@@ -37,6 +39,7 @@ describe('getCitiesByCountryUseCase', () => {
     });
 
     it('debería retornar status 400 y body con instrucciones cuando se ingresan números en el país', () => {
+        //R2D2 tiene un numero
         const country = 'R2D2';
         const cities = [];
         citiesRepository.searchCitiesByCountryName.mockReturnValue(cities);
@@ -50,6 +53,7 @@ describe('getCitiesByCountryUseCase', () => {
         expect(ctx.status).toEqual(400);
     });
     it('debería retornar status 400 y body con instrucciones para ingresar un pais con mas caracteres', () => {
+        //CH es un pais de solo dos caracteres por lo que no deberia dejar
         const country = 'CH';
         const cities = [];
         citiesRepository.searchCitiesByCountryName.mockReturnValue(cities);

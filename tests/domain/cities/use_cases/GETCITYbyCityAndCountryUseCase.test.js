@@ -9,6 +9,7 @@ describe('getCitiesByCityNameAndCountryUseCase', () => {
     });
 
     it('debería retornar status 400 y body con instrucciones para ingresar un pais con mas caracteres', () => {
+        //US es un pais de solo dos caracteres por lo que no deberia dejar
         const country = 'US';
         const city = 'New York';
         const cities = [];
@@ -26,6 +27,7 @@ describe('getCitiesByCityNameAndCountryUseCase', () => {
         expect(ctx.status).toEqual(400);
     });
     it('debería retornar status 400 y body con instrucciones para ingresar una ciudad con mas caracteres', () => {
+        //VA es una ciudad de solo dos caracteres por lo que no deberia dejar
         const country = 'Chile';
         const city = 'VA';
         const cities = [];
