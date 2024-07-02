@@ -28,6 +28,14 @@ exports.getCitiesByCountryUseCase = (ctx) => {
 
 
 exports.getCitiesByCityNameAndCountryUseCase = (ctx) => {
-    ctx.body = citiesRepository.searchCityByCityNameAndCountry(ctx.params.city, ctx.params.country)
+    const country = ctx.params.country
+    const city = ctx.params.city
+    const result = citiesRepository.searchCityByCityNameAndCountry(city, country)
+    if(country.length < 3 || city.length < 3){
+        ctx.body = { message: "El país/ciudad ingresado debe tener al menos 3 caracteres" };
+        ctx.status = 400;
+    } else{
+        ctx.body = citiesRepository.searchCityByCityNameAndCountry(city, country)
+    }
     return ctx
 }

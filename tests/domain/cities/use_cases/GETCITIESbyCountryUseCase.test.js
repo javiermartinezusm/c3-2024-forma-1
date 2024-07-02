@@ -49,4 +49,17 @@ describe('getCitiesByCountryUseCase', () => {
         expect(ctx.body).toEqual({ message: "Solo se aceptan caracteres no numéricos" });
         expect(ctx.status).toEqual(400);
     });
+    it('debería retornar status 400 y body con instrucciones para ingresar un pais con mas caracteres', () => {
+        const country = 'CH';
+        const cities = [];
+        citiesRepository.searchCitiesByCountryName.mockReturnValue(cities);
+        const ctx = {
+            params: { country },
+            body: null
+        };
+        getCitiesByCountryUseCase(ctx);
+        expect(citiesRepository.searchCitiesByCountryName).toHaveBeenCalledWith(country);
+        expect(ctx.body).toEqual({ message: "El país/ciudad ingresado debe tener al menos 3 caracteres" });
+        expect(ctx.status).toEqual(400);
+    });
 });
